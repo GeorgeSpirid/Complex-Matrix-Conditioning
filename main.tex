@@ -1,0 +1,533 @@
+%credits K. Κουνής, I. Στεφανίδου 
+%refactoring : K.Draziotis (drazioti@gmail.com
+%Licence CC_BY_SA
+
+\documentclass[12pt]{article}
+\usepackage{helvet} 
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\graphicspath{{images/}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\lstset{
+    basicstyle=\ttfamily,
+    breaklines=true,
+    inputencoding=utf8,
+    extendedchars=true,
+    language=bash,
+    showstringspaces=false,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+}
+
+\titleformat{\section}[display]
+         {\clearpage\vspace*{50pt}%
+         \normalfont\huge\bfseries}%
+         {{\Kappa}E{\Phi}A{\Lambda}AIO \thesection}%
+         {20pt}%
+         {\Huge}%
+         [\vspace{40pt}]
+
+\usepackage[algosection,commentsnumbered,ruled,vlined]{algorithm2e}
+\NoCaptionOfAlgo
+\usepackage{chemarrow}
+\newcommand\aug{\fboxsep=-\fboxrule\!\!\!\fbox{\strut}\!\!\!}
+\usepackage{graphicx}
+\usepackage{gfsdidot}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,greek]{babel} % και για τις δυο γλώσσες
+\usepackage{alphabeta}
+\usepackage{makeidx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{systeme}
+\usepackage{algorithmic}
+\usepackage{comment}
+
+% TEXT FORMATTING
+% set spacing between lines (διάστιχο)
+\usepackage{setspace}
+\setstretch{1.5}
+% package to customize chapters, sections and subsections style
+\usepackage{titlesec}
+% chapter title appearance format
+\titleformat{\chapter}[display]
+{\bfseries\huge}{\chaptertitlename\space\thechapter}{16pt}{}
+% https://www.sharelatex.com/learn/Sections_and_chapters
+\titlespacing{\chapter}{0pc}{1.5ex plus .1ex minus .2ex}{5pc}
+% section title appearance format
+\titleformat{\section}
+{\bfseries\large}{\thesection}{14pt}{}
+% subsection title appearance format
+\titleformat{\subsection}
+{\bfseries\normalsize}{\thesubsection}{12pt}{}
+% set margins
+\usepackage{geometry}
+\geometry{left=3cm, right=2cm, top=4cm, bottom=3cm}
+\usepackage{setspace}
+
+% Caption customization
+% use this package to set appearance for captions
+\usepackage{caption}
+% caption size for figures 10pt
+\captionsetup[figure]{font=footnotesize,labelfont=footnotesize}
+% caption size for tables 10pt and underlined
+\usepackage[normalem]{ulem} % Package for underlining
+\DeclareCaptionLabelFormat{label_format}{\uline{#1~#2}} % underline label
+\DeclareCaptionTextFormat{text_format}{\uline{#1}} % underline text
+\DeclareCaptionLabelSeparator{separator_format}{\uline{:~}} % underline separator
+% \captionsetup[table]{font=normalsize,labelfont=normalsize,labelformat=label_format,textformat=text_format,labelseparator=separator_format}
+
+\usepackage{amsfonts}
+\usepackage{amscd}
+\usepackage{amssymb}
+\newtheorem{algor}{\bf{Algorithm}}[subsection]
+
+\newtheorem{remark}{Remark}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\numberwithin{equation}{section}
+
+% change listings name in caption to Απεικόνιση
+\renewcommand{\lstlistingname}{Απεικόνιση}
+% change listings name in contents page to Κατάλογος απεικονήσεων
+\renewcommand\lstlistlistingname{Κατάλογος απεικονίσεων}
+
+\lstdefinelanguage{lang1}{
+  basicstyle=\normalfont\ttfamily,
+  showstringspaces=false,
+  breaklines=true,
+  frame=lines,
+  backgroundcolor=\color{background},
+  literate=
+   *{0}{{{\color{numb}0}}}{1}
+   {1}{{{\color{numb}1}}}{1}
+   {2}{{{\color{numb}2}}}{1}
+   {3}{{{\color{numb}3}}}{1}
+   {4}{{{\color{numb}4}}}{1}
+   {5}{{{\color{numb}5}}}{1}
+   {6}{{{\color{numb}6}}}{1}
+   {7}{{{\color{numb}7}}}{1}
+   {8}{{{\color{numb}8}}}{1}
+   {9}{{{\color{numb}9}}}{1}
+   {:}{{{\color{punct}{:}}}}{1}
+   {,}{{{\color{punct}{,}}}}{1}
+   {\{}{{{\color{delim}{\{}}}}{1}
+   {\}}{{{\color{delim}{\}}}}}{1}
+   {[}{{{\color{delim}{[}}}}{1}
+   {]}{{{\color{delim}{]}}}}{1},
+}
+
+% create command for blank page
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+    
+\definecolor{maroon}{HTML}{AF3235}
+
+% use fancy header and footer
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+
+% Turn on the style
+\pagestyle{fancy}
+% Clear the header and footer
+\fancyhf{}
+% Set the right side of the footer to be the page number
+\fancyfoot[R]{\thepage}
+% set page number appearance to bottom right
+\fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhf{}
+    \fancyfoot[R]{\thepage}%
+}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\lt}{\latintext}
+
+\begin{document}
+\begin{titlepage}
+
+{\LARGE Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης}
+\begin{center} {\Large Σχολή Θετικών Επιστημών} \end{center}
+\begin{figure}[h]
+\raggedright
+\hspace{90pt}
+\includegraphics[width=0.5\linewidth]{logo.png}
+\end{figure}
+\begin{center}
+
+\begin{figure}[h]
+\centering 
+% \includegraphics[width=0.3\linewidth]{authLogo.png} % Commented out for compilation
+\end{figure}
+\begin{center}
+% leave 2 cm from above text
+
+\HRule \\[0.4cm]
+{\huge \lt{Complex Matrix Inversion}}
+
+\HRule \\[0.4cm]
+\end{center}
+
+% put this on the bottom
+\vfill
+\begin{doublespacing}
+
+{\LARGE 
+Σπυριδόπουλος Γεώργιος  {\lt{gspyridop@csd.auth.gr}} ΑΕΜ: 4619\\}
+
+\vfill 
+{\Large \today}
+\end{doublespacing}
+\end{center}
+\end{titlepage}
+
+\clearpage
+
+\selectlanguage{english}
+
+\newenvironment{proof}{\par\noindent\textit{Proof.}}{\hfill$\square$\medskip}
+
+\section{Lemma 3.2 in $\mathbb{R}^{2\times2}$}
+
+We begin by examining the two families of $B$ to construct every normal $N$ in $\mathbb{R}^{2\times2}$. Specifically, when can we use Lemma 3.2 of ``Complex Matrix Inversion via Real Matrix Inversions''? Given a $2 \times 2$ real matrix $A$ and after finding its QR decomposition, when is $N=Q^{-1}BR^{-1}=Q^TBR^{-1}$ normal (given $B \in \mathbb{R}^{2\times2}$)?
+
+First of all, since $A \in GL_2(\mathbb{R})$, it has a unique QR decomposition. Let
+\[ A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad B = \begin{pmatrix} e & f \\ g & h \end{pmatrix} \]
+where $\det(A) \neq 0 \implies ad - bc \neq 0$.
+
+The orthogonal matrix $Q$ and the upper triangular matrix $R$ are given by:
+\[ Q = \frac{1}{\sqrt{a^2+c^2}} \begin{pmatrix} a & -c \\ c & a \end{pmatrix}, \quad R = Q^TA = \frac{1}{\sqrt{a^2+c^2}} \begin{pmatrix} a^2+c^2 & ab+cd \\ 0 & -cb+ad \end{pmatrix} \]
+where $Q^T = Q^{-1}$. We evaluate $C = A+iB$:
+\[ C = QR+iB = Q(R+iQ^TB) = Q(I+iQ^TBR^{-1})R \]
+By defining $N = Q^TBR^{-1}$, we obtain $C = Q(I+iN)R$. Since $Q$ is orthogonal, it preserves lengths (no stretching/shrinking), meaning $\kappa_2(Q) = 1$. Therefore, the condition number of $C$ is $\kappa_2(C) = \kappa_2((I+iN) R)$.
+
+For $s = \sqrt{a^2+c^2}$ and for $R^{-1} = \begin{pmatrix} 1/s & -t/(s\Delta) \\ 0 & s/\Delta \end{pmatrix}$, where $t = ab+cd$ and $\Delta = ad-bc$, we compute:
+\[ Q^T B = \frac{1}{s} \begin{pmatrix} a & c \\ -c & a \end{pmatrix} \begin{pmatrix} e & f \\ g & h \end{pmatrix} = \frac{1}{s} \begin{pmatrix} ae+cg & af+ch \\ -ce+ag & -cf+ah \end{pmatrix} \]
+This leads to $N = Q^TBR^{-1}$:
+\begin{align*}
+N &= \frac{1}{s} \begin{pmatrix} ae+cg & af+ch \\ -ce+ag & -cf+ah \end{pmatrix} \begin{pmatrix} 1/s & -t/(s\Delta) \\ 0 & s/\Delta \end{pmatrix} \\
+&= \begin{pmatrix} \frac{p}{s^2} & -\frac{pt}{s^2\Delta} + \frac{q}{\Delta} \\ \frac{r}{s^2} & -\frac{rt}{s^2\Delta} + \frac{u}{\Delta} \end{pmatrix}
+\end{align*}
+where $p=ae+cg$, $q=af+ch$, $r=-ce+ag$, and $u=-cf+ah$.
+
+To determine when $N$ is normal ($NN^T = N^TN$), let $N = \begin{pmatrix} x & y \\ z & w \end{pmatrix}$, giving $N^T = \begin{pmatrix} x & z \\ y & w \end{pmatrix}$.
+\begin{align*}
+NN^T &= \begin{pmatrix} x & y \\ z & w \end{pmatrix} \begin{pmatrix} x & z \\ y & w \end{pmatrix} = \begin{pmatrix} x^2+y^2 & xz+yw \\ xz+wy & z^2+w^2 \end{pmatrix} \\
+N^TN &= \begin{pmatrix} x & z \\ y & w \end{pmatrix} \begin{pmatrix} x & y \\ z & w \end{pmatrix} = \begin{pmatrix} x^2+z^2 & xy+zw \\ xy+zw & y^2+w^2 \end{pmatrix}
+\end{align*}
+Equating the elements yields:
+\begin{itemize}
+    \item $x^2+y^2 = x^2+z^2 \implies y^2 = z^2 \implies y = \pm z$
+    \item $xz+yw = xy+zw \implies xz-xy+yw-zw = 0 \implies (x-w)(y-z) = 0$
+\end{itemize}
+One of the two cases must be true for $N$ to be normal:
+\begin{description}
+    \item[Case 1:] $y=z$
+    \item[Case 2:] $y=-z$ and $x=w$
+\end{description}
+
+\subsection{Case 1: $N$ is Symmetric}
+For case 1, we have $\frac{r}{s^2} = \frac{-pt}{s^2\Delta} + \frac{q}{\Delta} \implies r\Delta = -pt + s^2q$.
+For case 2, we have $\frac{r}{s^2} = \frac{pt}{s^2\Delta} - \frac{q}{\Delta} \implies r\Delta = pt - s^2q$ and $\frac{p}{s^2} = \frac{-rt}{s^2\Delta} + \frac{u}{\Delta} \implies p\Delta = -rt + us^2$.
+
+Expanding Case 1: $(ad-bc)(-ce+ag) = -(ae+cg)(ab+cd) + (af+ch)(a^2+c^2)$.
+After calculations we get $af+ch = be+dg$.
+
+For $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ and $B = \begin{pmatrix} e & f \\ g & h \end{pmatrix}$ with $a^2+c^2>0$ (first column of $A$ is nonzero) and $\det(A) = ad-bc \neq 0$ so that $R^{-1}$ exists, we see that:
+\[ A^TB = \begin{pmatrix} a & c \\ b & d \end{pmatrix} \begin{pmatrix} e & f \\ g & h \end{pmatrix} = \begin{pmatrix} ae+cg & af+ch \\ be+dg & bf+dh \end{pmatrix} \]
+and
+\[ (A^TB)^T = B^TA = \begin{pmatrix} ae+cg & be+dg \\ af+ch & bf+dh \end{pmatrix} \]
+So in Case 1, $N$ is normal if and only if $A^TB$ is symmetric.
+
+Even better: set $Y = BA^{-1} \implies B = YA$. Thus $A^TB = A^TYA$, meaning $A^TB$ is symmetric if and only if $BA^{-1}$ is symmetric. This holds because $A^TYA$ must be symmetric: 
+\[ (A^TB)^T = A^TB \implies (A^TYA)^T = A^TYA \implies A^TY^TA = A^TYA \implies A^T(Y^T-Y)A = 0 \implies Y^T = Y \]
+since $A$ is invertible. 
+
+We have shown that $A^TB$ symmetric $\iff BA^{-1}$ symmetric $\iff$ $N$ is normal in case 1.
+So $B = YA$ and can be obtained by multiplying $A$ by a symmetric matrix on the left. This is a way to generate $B$ for our results for case 1: for any fixed invertible matrix $A \in \mathbb{R}^{2\times2}$, every matrix $B$ satisfying case 1 has the form $B = \begin{pmatrix} p & q \\ q & r \end{pmatrix}A$ for $p,q,r \in \mathbb{R}$.
+
+This can also be derived from the condition $y=z \implies N = \begin{pmatrix} x & y \\ y & w \end{pmatrix}$, which means $N$ is symmetric. Since $B = SA$ for a symmetric matrix $S$, we get $B = SQR$ and $N = Q^TSQRR^{-1} = Q^TSQ$. Taking the transpose, $N^T = Q^TS^TQ$. But $S=S^T \implies N^T = Q^TSQ = N$, so $N$ is also symmetric.
+
+Because $S$ can be any symmetric $2 \times 2$ matrix and $A$ can be any invertible matrix, this construction can produce every symmetric $N$ which is also normal. In this case, $C = A+iB = Q(I+iS)R$.
+
+\subsection{Case 2: $N$ is a Scaled Rotation}
+Here $N = \begin{pmatrix} x & y \\ -y & x \end{pmatrix} = xI+yJ$ for $J = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ where $J^2 = -I$.
+Then $B = QNR = Q(xI+yJ)R = (xI+yQJQ^T)A$.
+
+For any invertible $A$, we can choose any real $x,y$ so that we construct $B$ for $N$ to be normal with $B = (xI+yQJQ^T)A$, similar to $B = SA$ in Case 1. In Case 2, we construct a family of matrices that are not symmetric. 
+
+The two cases produce every normal matrix in $\mathbb{R}^{2\times2}$ because $N$ is normal if it is of the form $N = \begin{pmatrix} a & b \\ b & c \end{pmatrix}$ or $N = \begin{pmatrix} a & b \\ -b & a \end{pmatrix}$. This is a standard result in linear algebra. 
+
+Therefore, we have proved that all normal matrices $N \in \mathbb{R}^{2\times2}$ are attainable for any fixed invertible $A$ by setting $B = SA$ or $B = (xI+yQJQ^T)A$.
+\begin{itemize}
+    \item \textbf{In Case 1:} $C_1 = A+iB = A+iSA = (I+iS)A$.
+    \item \textbf{In Case 2:} $C_2 = Q \cdot (I+iN)R = Q\left(I+i\begin{pmatrix} x & y \\ -y & x \end{pmatrix}\right)R$.
+\end{itemize}
+
+We can investigate how $\kappa(C)$ is affected in both cases by $S$'s entries in the first case and $x, y$ in the second for a fixed $A$. We could start with $A = \begin{pmatrix} 1 & 0 \\ 0 & \epsilon \end{pmatrix}$ to test $\kappa(A)$ and compare it to $\kappa(C)$ and then general diagonal matrices $A = \begin{pmatrix} a_1 & 0 \\ 0 & a_2 \end{pmatrix}$.
+
+We care for $N$ being normal since we can use the property that normal matrices are unitarily diagonalizable: $N = U\Lambda U^H$ where $UU^H = U^HU = I$ and $\Lambda = \text{diag}(\lambda_1,...,\lambda_n)$.
+
+\begin{proof}
+For an eigenvalue $\lambda$ of $N$, let $Nv = \lambda v \implies U\Lambda U^*v = \lambda v \implies U^*U\Lambda U^*v = \lambda U^*v \implies I\Lambda U^*v = \lambda U^*v$. Let $w = U^*v$. Then $\Lambda w = \lambda w$ with $w \neq 0$ since $v \in \mathbb{C}^n\setminus\{0\}$ and $U$ is unitary. Therefore, eigenvalues of $N$ are the eigenvalues of $\Lambda$.
+\end{proof}
+
+For example, for $A = \begin{pmatrix} 1 & 0 \\ 0 & 10 \end{pmatrix}$, $S = \begin{pmatrix} 2 & 0 \\ 0 & 1 \end{pmatrix}$, $Q=I, R=A$, $B = QSR = \begin{pmatrix} 2 & 0 \\ 0 & 10 \end{pmatrix}$ (Case 1).
+Then $C = (I+iS)A = \begin{pmatrix} 1+2i & 0 \\ 0 & 10(1+i) \end{pmatrix}$. We see $\kappa(A)=10$ and $\kappa(C)=2\sqrt{10} \simeq 6.325$, so $\kappa(A) > \kappa(C)$.
+
+\section{Conditioning Analysis}
+
+\begin{lemma}
+For $A = \begin{pmatrix} 1 & 0 \\ 0 & \epsilon \end{pmatrix}$, $A=QR$ and $B=(xI+yQJQ^T)A$ for $N$ to be normal, one of the two cases $B=QNR \implies N=Q^TBR^{-1}$ cannot improve the conditioning of $C=A+iB=Q(I+iN)R$. That is, $\kappa_2(C) \ge \kappa_2(A)$.
+\end{lemma}
+\begin{proof}
+$B = QNR = NA = \begin{pmatrix} x & \epsilon y \\ -y & \epsilon x \end{pmatrix}$ for $Q=I, R=A$. Say $0 < \epsilon \ll 1$. Let $N = \begin{pmatrix} x & y \\ -y & x \end{pmatrix}$.
+\[ C = A+iB = \begin{pmatrix} 1 & 0 \\ 0 & \epsilon \end{pmatrix} + i\begin{pmatrix} x & \epsilon y \\ -y & \epsilon x \end{pmatrix} = \begin{pmatrix} 1+ix & i\epsilon y \\ -iy & \epsilon(1+ix) \end{pmatrix} \]
+We have
+\[ C^*C = \begin{pmatrix} 1+x^2+y^2 & 2i\epsilon y \\ -2i\epsilon y & \epsilon^2(1+x^2+y^2) \end{pmatrix} \]
+$\det(C^*C)$ gives eigenvalues $\lambda_\pm = \frac{s(1+\epsilon^2) \pm \sqrt{s^2(1-\epsilon^2)^2+16x^2y^2}}{2}$.
+Thus $\kappa_2(C) = \sqrt{\frac{\lambda_+}{\lambda_-}}$ for $s = 1+x^2+y^2$. 
+
+We know that $\kappa_2(C) \ge \frac{\max(\|c_1\|_2, \|c_2\|_2)}{\min(\|c_1\|_2, \|c_2\|_2)}$ where $C = \begin{pmatrix} 1+ix & i\epsilon y \\ -iy & \epsilon(1+ix) \end{pmatrix}$ with column norms $\|c_1\|_2 = \sqrt{1+x^2+y^2}$ and $\|c_2\|_2 = \sqrt{\epsilon^2(1+x^2+y^2)} = \epsilon\sqrt{1+x^2+y^2} = \epsilon\|c_1\|_2$.
+With $0 < \epsilon \ll 1$, we have $\|c_1\|_2 > \|c_2\|_2$ and $\kappa_2(C) \ge \frac{\|c_1\|_2}{\|c_2\|_2}$.
+Therefore, $\kappa_2(C) \ge \frac{1}{\epsilon}$. But $\kappa_2(A) = \frac{1}{\epsilon}$, so $\kappa_2(C) \ge \kappa_2(A)$.
+\end{proof}
+
+\begin{lemma}
+$\kappa_2(C) \ge \frac{\|c_1\|_2}{\|c_2\|_2}$ for $C = \begin{pmatrix} | & | \\ c_1 & c_2 \\ | & | \end{pmatrix}$ with $\|c_1\|_2 \ge \|c_2\|_2$.
+\end{lemma}
+\begin{proof}
+By definition, $\kappa_2(C) = \|C\|_2 \|C^{-1}\|_2$. Since $\|A\|_2 = \max_{x\neq 0} \frac{\|Ax\|_2}{\|x\|_2} \ge \frac{\|Ae_1\|_2}{\|e_1\|_2}$, we have $\|C\|_2 \ge \frac{\|Ce_1\|_2}{\|e_1\|_2}$.
+But $Ce_1 = c_1$ and $\|e_1\|_2 = 1 \implies \|C\|_2 \ge \|c_1\|_2$.
+Also $C^{-1}c_2 = e_2 \implies \|C^{-1}\|_2 \ge \frac{\|C^{-1}c_2\|_2}{\|c_2\|_2} \implies \|C^{-1}\|_2 \ge \frac{1}{\|c_2\|_2}$.
+Multiplying these gives $\|C\|_2 \cdot \|C^{-1}\|_2 \ge \frac{\|c_1\|_2}{\|c_2\|_2} \implies \kappa_2(C) \ge \frac{\|c_1\|_2}{\|c_2\|_2}$.
+\end{proof}
+
+\begin{lemma}
+For any $A = \text{diag}(a,b)$ with $a,b > 0$ and $N = \begin{pmatrix} x & y \\ -y & x \end{pmatrix}$, where $A=QR$, $Q=I$, $R=A$, we have $\kappa_2(C) \ge \kappa_2(A)$.
+\end{lemma}
+\begin{proof}
+$B = NA = \begin{pmatrix} xa & yb \\ -ya & xb \end{pmatrix}$, leading to $C = \begin{pmatrix} a(1+ix) & iyb \\ -iya & b(1+ix) \end{pmatrix}$.
+The column norms are $c_1 = \begin{pmatrix} a(1+ix) \\ -iya \end{pmatrix}$ and $c_2 = \begin{pmatrix} iyb \\ b(1+ix) \end{pmatrix}$.
+Using the previous result, $\kappa_2(C) \ge \frac{\|c_1\|_2}{\|c_2\|_2} \implies \kappa_2(C) \ge \frac{\max\{a,b\}}{\min\{a,b\}}$.
+Since $\kappa_2(A) = \frac{\max\{a,b\}}{\min\{a,b\}}$, we conclude $\kappa_2(C) \ge \kappa_2(A)$.
+\end{proof}
+
+\begin{lemma}
+The above holds for any generic $A = QR$ with $A = \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}$.
+\end{lemma}
+\begin{proof}
+Let $N = \begin{pmatrix} x & y \\ -y & x \end{pmatrix}$, $B = QNR$, $C = A+iB$, $R = Q^TA$, leading to $C = (I+iQNQ^T)A$. We know that $Q^TJQ = \det(Q)J$ since for $Q = \begin{pmatrix} p & r \\ q & s \end{pmatrix}$:
+\[ Q^TJQ = \begin{pmatrix} p & q \\ r & s \end{pmatrix} \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} p & r \\ q & s \end{pmatrix} = \begin{pmatrix} -q & p \\ -s & r \end{pmatrix} \begin{pmatrix} p & r \\ q & s \end{pmatrix} = \begin{pmatrix} 0 & -qr+ps \\ -ps+qr & 0 \end{pmatrix} = \det(Q)J \]
+since $\det(Q) = \pm 1$.
+Thus $QNQ^T = xI + y\det(Q)J$. Set $y\det(Q) = t \in \mathbb{R}$. Then $C = (I+i(xI+tJ))A$, giving:
+\[ C = \begin{pmatrix} a(1+ix) & itb \\ -ita & b(1+ix) \end{pmatrix} \]
+By the same logic as the last proof, $\kappa_2(C) \ge \kappa_2(A)$ holds too.
+\end{proof}
+
+\subsection{Finding Perfectly Conditioned $C$}
+For $A = \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}$ and $N = \begin{pmatrix} x & y \\ y & z \end{pmatrix}$, we try to construct a perfectly conditioned $C$ using $B = QNR$. Say $0 < a < b$ (without loss of generality). We could use $\kappa_2(A) = \frac{\max(|a|,|b|)}{\min(|a|,|b|)}$ but it would mean more calculations. Here, $\kappa_2(A) = \frac{b}{a}$.
+
+For $B = SA$ where $S = QNQ^T$, we know $R = Q^TA$ implies $B = QNQ^TA = SA$. Since $N$ is symmetric, $S$ is symmetric as shown earlier. Let:
+\[ B = \begin{pmatrix} u & v \\ v & w \end{pmatrix} \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix} = \begin{pmatrix} ua & vb \\ va & wb \end{pmatrix} \]
+which gives
+\[ C = A+iB = \begin{pmatrix} a(1+iu) & ivb \\ iva & b(1+iw) \end{pmatrix} \]
+Can some $u, v, w$ give us $\kappa_2(C) = 1$? We must prove that $\kappa_2(C) = 1 \iff C^*C = \lambda I$ for some $\lambda > 0$.
+\begin{proof}
+$\kappa_2(C) = \frac{\sigma_{\max}(C)}{\sigma_{\min}(C)} = 1 \implies \sigma_{\max}(C) = \sigma_{\min}(C)$. So all singular values of $C$ must be equal, say to $s$. Since $(C^*C)^* = C^*C$, the matrix $C^*C$ is Hermitian and diagonalizable by a unitary matrix $U$. So $C^*C = U \begin{pmatrix} s^2 & 0 \\ 0 & s^2 \end{pmatrix} U^* = s^2 UU^* = s^2 I = \lambda I$.
+Conversely, if $C^*C = \lambda I$, then $\kappa_2(C) = \frac{\sqrt{\lambda}}{\sqrt{\lambda}} = 1$.
+\end{proof}
+
+Computing $C^*C$:
+\[ C^*C = \begin{pmatrix} a^2(1+x^2+y^2) & aby(x+z) \\ aby(x+z) & b^2(1+z^2+y^2) \end{pmatrix} = \begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \]
+For $\kappa_2(C)=1$, the off-diagonal terms must vanish: $aby(x+z) = 0$. Since $ab \neq 0$, we have $y(x+z) = 0$. If $x+z = 0 \implies x = -z$, the diagonal elements would give $a^2(1+z^2+y^2) = b^2(1+z^2+y^2) \implies a^2 = b^2$, which is impossible since $a < b$.
+Thus $y=0$, leaving $N = \begin{pmatrix} x & 0 \\ 0 & z \end{pmatrix}$. Solving $a^2(1+x^2) = b^2(1+z^2)$ gives the symmetric matrices achieving perfect conditioning:
+\[ N = \begin{pmatrix} \pm \sqrt{\frac{b^2}{a^2}(1+z^2)-1} & 0 \\ 0 & z \end{pmatrix}, \quad z \in \mathbb{R} \]
+We can achieve perfect conditioning for $C$ ($\kappa_2(C)=1$) by choosing $N = \begin{pmatrix} u & 0 \\ 0 & w \end{pmatrix}$. So for all matrices of this family ($B=QNR$, $A=QR$, $C=A+iB$), with $(\frac{a}{b})^2 \le \frac{1+w^2}{1+u^2} \le (\frac{b}{a})^2$, we obtain $\kappa_2(C) < \kappa_2(A)$ where $A = \begin{pmatrix} a & 0 \\ 0 & b \end{pmatrix}$.
+
+\subsection{Generalization to any $A \in GL_2(\mathbb{R})$}
+Let $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ with $\det(A) \neq 0$. $A=QR$ gives $R = \begin{pmatrix} r & s \\ 0 & t \end{pmatrix}$ where $rt \neq 0$, and $Q^TQ=I$ since $Q \in O_2(\mathbb{R})$.
+For $B = QNR$, $C = Q(I+iN)R \implies \kappa_2(C) = \kappa_2((I+iN)R)$ and $\kappa_2(A) = \kappa_2(R)$.
+We try $N = \begin{pmatrix} x & y \\ y & z \end{pmatrix}$ for $x,y,z \in \mathbb{R}$ since it worked for diagonal $A$.
+\[ I+iN = \begin{pmatrix} 1+ix & iy \\ iy & 1+iz \end{pmatrix}, \quad M = (I+iN)R = \begin{pmatrix} r(1+ix) & s(1+ix)+ity \\ iry & isy+t(1+iz) \end{pmatrix} \]
+For $M = \begin{pmatrix} p & q \\ u & v \end{pmatrix}$, $M^* = \begin{pmatrix} \bar{p} & \bar{u} \\ \bar{q} & \bar{v} \end{pmatrix}$. We want $\kappa_2(M) = 1 \iff M^*M = \lambda I$ with $\lambda > 0$.
+\[ M^*M = \begin{pmatrix} |p|^2+|u|^2 & \bar{p}q+\bar{u}v \\ \bar{q}p+\bar{v}u & |q|^2+|v|^2 \end{pmatrix} = \begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \]
+From $(M^*M)_{12} = 0$:
+\begin{align*}
+r(1-ix)(s(1+ix)+ity) - iry(isy+t(1+iz)) &= 0 \\
+rs(1+x^2) + irty(1-ix) + ry^2s - irty(1+iz) &= 0 \\
+rs(1+x^2+y^2) + rty(i+x-i+z) &= 0 \\
+s(1+x^2+y^2) + ty(x+z) &= 0 \quad \text{(1)}
+\end{align*}
+From equating diagonal terms $(M^*M)_{11} = (M^*M)_{22}$:
+\[ r^2(1+x^2+y^2) = s^2(1+x^2+y^2) + t^2(1+y^2+z^2) + 2sty(x+z) \quad \text{(2)} \]
+From (1), $2sty(x+z) = -2s^2(1+x^2+y^2)$. Substituting into (2):
+\begin{align*}
+r^2(1+x^2+y^2) &= s^2(1+x^2+y^2) + t^2(1+y^2+z^2) - 2s^2(1+x^2+y^2) \\
+(r^2+s^2)(1+x^2+y^2) &= t^2(1+y^2+z^2) \quad \text{(3)}
+\end{align*}
+
+Let's pick variables to satisfy these. Try $x = -\frac{t}{r}, y = \frac{s}{r}$. Then $1+x^2+y^2 = \frac{r^2+t^2+s^2}{r^2}$.
+Substituting into (1):
+\begin{align*}
+s\frac{r^2+t^2+s^2}{r^2} + t\frac{s}{r}\left(-\frac{t}{r} + z\right) &= 0 \\
+s\frac{r^2+s^2}{r^2} + \frac{st^2}{r^2} - \frac{st^2}{r^2} + z\frac{ts}{r} &= 0 \\
+s\frac{r^2+s^2}{r^2} + z\frac{ts}{r} &= 0
+\end{align*}
+Multiplying by $r^2/s$ (assuming $s \neq 0$): $r^2+s^2+rtz = 0 \implies z = -\frac{r^2+s^2}{rt}$. If $s=0$, the system is satisfied by $z = -\frac{r}{t}, y=0$.
+Checking (3):
+\begin{align*}
+\text{LHS} &= (r^2+s^2)\frac{r^2+t^2+s^2}{r^2} = \frac{(t^2+r^2+s^2)(r^2+s^2)}{r^2} \\
+\text{RHS} &= t^2\left(1 + \frac{s^2}{r^2} + \frac{(r^2+s^2)^2}{r^2t^2}\right) = \frac{t^2(r^2+s^2) + (r^2+s^2)^2}{r^2} = \frac{(t^2+r^2+s^2)(r^2+s^2)}{r^2} = \text{LHS}
+\end{align*}
+The equations are satisfied. For these choices of $x, y, z$, we construct $N$. We showed $M^*M$ has the form $\lambda I$, meaning $\kappa_2(C)=1$. The exact scale factor is $(M^*M)_{11} = r^2+s^2+t^2$, so $M^*M = (r^2+s^2+t^2)I$. Thus $M$ scales every vector by $\sqrt{\lambda}$, confirming $\kappa_2(M) = 1 = \kappa_2(C)$.
+
+\section{Perfectly Conditioning any $A \in GL_n(\mathbb{R})$}
+
+We prove we can make $C = A+iB$ perfectly conditioned for any invertible $A \in \mathbb{R}^{n\times n}$. Let $C = Q(I+iN)R$ where $A=QR$, $B=QNR$. We need $C^*C = \lambda I$ with $\lambda > 0$.
+\begin{align*}
+C^* &= (Q(I+iN)R)^* = R^T(\overline{I+iN})^T Q^T = R^T(I-iN)Q^T \quad \text{(since $N^T=N$)} \\
+C^*C &= R^T(I-iN)Q^TQ(I+iN)R = R^T(I-iN)(I+iN)R = R^T(I+N^2)R
+\end{align*}
+For $C^*C = \lambda I$, we require $I+N^2 = \lambda R^{-T}R^{-1}$, so $N^2 = \lambda (RR^T)^{-1} - I$.
+
+We set $M = N^2 = \lambda R^{-T}R^{-1} - I$. $M$ must be positive semidefinite. Since $R^{-T}R^{-1} = (R^{-1})^T R^{-1}$, it is positive definite. For the eigenvalues $\mu_i$ of $R^{-T}R^{-1}$, the eigenvalues of $M$ are $\lambda\mu_i-1$. Thus we require $\lambda\mu_{\min}-1 \ge 0 \implies \lambda \ge \frac{1}{\mu_{\min}}$.
+Since $M$ is symmetric positive semidefinite, it can be diagonalized as $M = U\Lambda U^T$ by an orthogonal $U$. We construct $N$ using the matrix square root $N = U\Lambda^{1/2}U^T$, which satisfies $N^2 = M$.
+Therefore, $\kappa_2(C) = \frac{\sigma_{\max}(C)}{\sigma_{\min}(C)} = \frac{\sqrt{\lambda}}{\sqrt{\lambda}} = 1 \implies C$ is perfectly conditioned. 
+The condition requires $\lambda \ge \frac{1}{\mu_{\min}(R^{-T}R^{-1})}$, making $M$ positive semidefinite for large enough $\lambda > 0$.
+
+\subsection{Construction Cost}
+Given $N^2 = M = \alpha R^{-T}R^{-1} - I$ with $\alpha \ge \sigma_{\max}(R)^2 = \sigma_{\max}(A)^2$, how costly is this?
+The eigenvalues of $(RR^T)^{-1}$ are $\frac{1}{\sigma_i(R)^2}$, so the eigenvalues of $M$ are $\lambda_i(M) = \frac{\alpha}{\sigma_i(R)^2} - 1$.
+For $M \ge 0$, we need $\alpha \ge \sigma_{\max}(R)^2 = \|R\|_2^2$. Since $B=QNR$ and $\|Q\|_2 = 1$, we have $\|B\|_2 = \|NR\|_2$.
+\begin{align*}
+\|B\|_2^2 &= \|B^TB\|_2 = \|R^TN^2R\|_2 = \|R^TMR\|_2 \\
+&= \|R^T(\alpha R^{-T}R^{-1} - I)R\|_2 = \|\alpha I - R^TR\|_2
+\end{align*}
+The eigenvalues of $R^TR$ are $\sigma_i(A)^2$, so the eigenvalues of $B^TB$ are $\alpha - \sigma_i(A)^2$.
+Thus $\|B\|_2^2 = \max_i (\alpha - \sigma_i(A)^2) = \alpha - \sigma_{\min}(A)^2$, yielding $\|B\|_2 = \sqrt{\alpha - \sigma_{\min}(A)^2}$.
+
+For the minimal valid $\alpha_{\min} = \sigma_{\max}(A)^2$, we get the exact minimum size:
+\[ \|B\|_{2\min} = \sqrt{\sigma_{\max}(A)^2 - \sigma_{\min}(A)^2} = \sigma_{\max}(A) \sqrt{1 - \frac{1}{\kappa_2(A)^2}} \]
+As $\kappa_2(A) \to \infty$ (arbitrarily ill-conditioned), $\|B\|_{2\min} \to \sigma_{\max}(A)$, provided $\sigma_{\max}(A)$ is fixed.
+
+There is a tradeoff: $\|B\|_2 = \sqrt{\alpha - \sigma_{\min}(A)^2}$ increases with $\alpha$, while $\kappa_2(B) = \sqrt{\frac{\alpha - \sigma_{\min}(A)^2}{\alpha - \sigma_{\max}(A)^2}}$ decreases toward $1$ as $\alpha \to \infty$.
+
+\section{Minimum-Norm Imaginary Perturbation}
+
+To minimize $\|B\|_2$ with a bound $\kappa_2(B) \le K$:
+\[ \frac{\alpha - m^2}{\alpha - s^2} \le K^2 \implies \alpha \ge \frac{K^2 s^2 - m^2}{K^2 - 1} \]
+This yields an optimal norm of $\|B\|_{2\min} = K \sqrt{\frac{s^2 - m^2}{K^2 - 1}}$.
+
+\begin{theorem}[Minimum-norm real imaginary part for perfect conditioning]
+Let $A \in GL_n(\mathbb{R})$ be invertible, with singular values $s = \sigma_{\max}(A)$ and $m = \sigma_{\min}(A) > 0$. Then
+\[ \min_{\kappa_2(A+iB)=1} \|B\|_2 = \sqrt{s^2 - m^2} \]
+for $B \in \mathbb{R}^{n\times n}$. Moreover, this minimum is attained by:
+\begin{enumerate}
+    \item \textbf{SVD construction:} If $A = U \Sigma V^T$, then $B_{SVD} = U (s^2 I - \Sigma^2)^{1/2} V^T$.
+    \item \textbf{QR construction:} If $A = QR$, then $M = s^2 R^{-T}R^{-1} - I$, $N = M^{1/2}$, and $B_{QR} = QNR$.
+\end{enumerate}
+Both constructions satisfy $B_{QR} = B_{SVD}$.
+\end{theorem}
+\begin{proof}
+For $\kappa_2(A+iB) = 1$, all singular values of $C=A+iB$ must be equal, so $C^*C = \lambda I$.
+\begin{align*}
+C^*C &= (A^T - iB^T)(A + iB) = A^TA + B^TB + i(A^TB - B^TA) \\
+A^TA + B^TB &= \lambda I \\
+A^TB - B^TA &= 0
+\end{align*}
+From $B^TB = \lambda I - A^TA \ge 0$, we know $\lambda \ge s^2$. The largest eigenvalue of $B^TB$ is $\lambda - m^2$.
+So $\|B\|_2^2 \ge s^2 - m^2 \implies \|B\|_2 \ge \sqrt{s^2 - m^2}$. This establishes a global lower bound.
+
+For the SVD construction, $D = (s^2 I - \Sigma^2)^{1/2}$. Then $B_{SVD} = U D V^T$ gives $C^*C = V(\Sigma^2 + D^2)V^T = s^2 I$, achieving $\kappa_2(C)=1$ and $\|B_{SVD}\|_2 = \sqrt{s^2 - m^2}$.
+For the QR construction, $A=QR \implies R = W \Sigma V^T$ where $W = Q^TU$.
+Then $R^{-T}R^{-1} = W \Sigma^{-2} W^T$, giving $N = W(s^2 \Sigma^{-2} - I)^{1/2}W^T$.
+Substituting into $B_{QR}$:
+\[ B_{QR} = Q W (s^2 \Sigma^{-2} - I)^{1/2} \Sigma V^T = U (s^2 \Sigma^{-2} - I)^{1/2} \Sigma V^T = U (s^2 I - \Sigma^2)^{1/2} V^T = B_{SVD} \]
+\end{proof}
+
+\section{Iterative Method for $Ax = b$}
+
+We proved that for $C$ to be perfectly conditioned while minimizing $\|B\|_2$, we have $A^TA + B^TB = s^2 I$.
+For the system $Ax = b$, multiplying by $A^T$:
+\begin{align*}
+A^TAx &= A^Tb \\
+(s^2 I - B^TB)x &= A^Tb \\
+s^2x &= A^Tb + B^TBx \\
+x_{k+1} &= \frac{1}{s^2}A^Tb + \frac{1}{s^2}B^TBx_k, \quad k \ge 0
+\end{align*}
+Substituting $B^TB = s^2 I - A^TA$, this is equivalent to $x_{k+1} = x_k + \frac{1}{s^2}A^T(b - Ax_k)$.
+This is the classical Landweber iteration (gradient descent) with an optimal step size $\alpha = \frac{1}{s^2}$. Geometrically, it is equivalent to extracting the real solution from its minimal perfectly conditioned complex counterpart.
+
+\begin{theorem}[Fixed-point induced by the minimum-norm construction]
+Let $A \in GL_n(\mathbb{R})$, with singular values $s = \sigma_{\max}(A), m = \sigma_{\min}(A) > 0$. Let $B \in \mathbb{R}^{n\times n}$ be the minimum-norm matrix from Theorem 1. For any $b \in \mathbb{R}^n$, consider $x_{k+1} = \frac{A^Tb}{s^2} + \frac{B^TB}{s^2}x_k$.
+\begin{enumerate}[label=\roman*)]
+    \item \textbf{Convergence:} For any initial vector $x_0 \in \mathbb{R}^n$, the sequence $(x_k)$ converges to the unique solution $x_* = A^{-1}b$.
+    \item \textbf{Convergence rate:} For all $k \ge 0$, $\|x_{k+1} - x_*\|_2 \le \left(1 - \frac{m^2}{s^2}\right) \|x_k - x_*\|_2$, with a contraction factor $q = 1 - \frac{1}{\kappa_2(A)^2} < 1$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Let $c = \frac{A^Tb}{s^2}$ and $T = \frac{B^TB}{s^2}$. We have $x_{k+1} = Tx_k + c$ and $x_* = Tx_* + c$. The error $e_k = x_k - x_*$ satisfies $e_{k+1} = Te_k$, so $e_k = T^k e_0$.
+The operator is $T = I - \frac{A^TA}{s^2}$, which has eigenvalues $\lambda_i(T) = 1 - \frac{\sigma_i(A)^2}{s^2}$.
+Thus $\lambda_{\max}(T) = 1 - \frac{m^2}{s^2} < 1$. Since $T$ is symmetric positive semidefinite, $\|T\|_2 = \lambda_{\max}(T) < 1$.
+Hence $\|e_k\|_2 \le \|T^k\|_2 \|e_0\|_2 \le (1-\frac{m^2}{s^2})^k \|e_0\|_2$. As $k \to \infty$, $e_k \to 0$, proving convergence.
+\end{proof}
+
+\section{Generalized Bounds}
+
+\begin{theorem}[Minimum-norm perturbation under a prescribed condition number bound]
+Let $A \in GL_n(\mathbb{R})$ with $s = \sigma_{\max}(A)$ and $m = \sigma_{\min}(A) > 0$. For any $K \ge 1$, consider the optimization problem minimizing $\|B\|_2$ subject to $\kappa_2(A+iB) \le K$. The minimum is
+\[ \|B\|_{2,\min} = \sqrt{\max\left\{0, \frac{s^2}{K^2} - m^2\right\}} \]
+Using the SVD $A = U\Sigma V^T$, the matrix $B_* = U D V^T$ with $D = (\frac{s^2}{K^2}I - \Sigma^2)_+^{1/2}$ attains this minimum. The QR construction $B_* = Q(R^{-T}PR^{-1})^{1/2}R$ with $P = (\frac{s^2}{K^2}I - R^TR)_+$ achieves the exact same matrix. In both cases, $\kappa_2(A+iB) = \frac{s}{\max\{m, s/K\}} \le K$.
+\end{theorem}
+\begin{proof}
+For $K \ge \kappa_2(A)$, we can trivially set $B=0$. For $1 \le K < \kappa_2(A)$, $B$ must be nonzero. Let $t = \|B\|_2$. For singular vectors $v_s$ and $v_m$:
+\[ \|Cv_s\|_2^2 = \|Av_s\|_2^2 + \|Bv_s\|_2^2 = s^2 + \|Bv_s\|_2^2 \ge s^2 \]
+So $\sigma_{\max}(C)^2 \ge s^2$. Adding $iB$ cannot reduce the largest singular value.
+\[ \|Cv_m\|_2^2 = m^2 + \|Bv_m\|_2^2 \le m^2 + t^2 \]
+So $\sigma_{\min}(C)^2 \le m^2 + t^2$.
+Thus $\kappa_2(C)^2 \ge \frac{s^2}{m^2+t^2}$. To satisfy $\kappa_2(C) \le K$, we require $K^2 \ge \frac{s^2}{m^2+t^2} \implies t^2 \ge \frac{s^2}{K^2} - m^2$, giving the global lower bound.
+
+For the SVD construction with $\tau = s/K$ and $D^2 = (\tau^2 I - \Sigma^2)_+$, the singular values of $C$ become $\max\{\sigma_i(A), \tau\}$. This yields $\sigma_{\max}(C) = s$ and $\sigma_{\min}(C) = \max\{m, \tau\}$, giving $\kappa_2(C) \le K$ and $\|B_*\|_2 = \|D\|_2 = \sqrt{\max\{0, \tau^2 - m^2\}}$.
+The QR construction similarly yields $B_{QR}^T B_{QR} = (\tau^2 I - R^TR)_+$, matching the SVD matrix properties.
+\end{proof}
+
+\end{document}
