@@ -1,18 +1,10 @@
-% Credits: K. Κουνής, I. Στεφανίδου
-% Refactoring: K. Draziotis
-% Licence: CC BY-SA
-
 \documentclass[11pt, reqno, a4paper]{amsart}
 
-% -------------------------------------------------
-% Packages
-% -------------------------------------------------
 \usepackage[LGR,T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,greek]{babel}
 \usepackage{alphabeta}
 
-% Prevent clash with amsthm
 \let\iint\undefined
 \let\iiint\undefined
 \let\iiiint\undefined
@@ -25,16 +17,10 @@
 \usepackage{geometry}
 \usepackage{enumitem}
 
-% -------------------------------------------------
-% Page layout (Standard Math Paper Margins)
-% -------------------------------------------------
 \geometry{
     margin=1.1in
 }
 
-% -------------------------------------------------
-% Theorem environments (AMS Style)
-% -------------------------------------------------
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -50,18 +36,12 @@
 
 \numberwithin{equation}{section}
 
-% -------------------------------------------------
-% Custom commands
-% -------------------------------------------------
+
 \newcommand{\lt}{\latintext}
 
 \begin{document}
 
 \selectlanguage{english}
-
-% =================================================
-% TITLE BLOCK (AMS Style)
-% =================================================
 
 \title{From Real to Complex Matrix Conditioning}
 
@@ -72,9 +52,6 @@
 
 \maketitle
 
-% =================================================
-% SECTION 1
-% =================================================
 
 \section{Starting Theorem}
 
@@ -657,9 +634,6 @@ Thus
 
 This is an example of achieving better conditioning on C than the one A has.
 
-% =================================================
-% SECTION 2
-% =================================================
 
 \section{Conditioning Analysis}
 
@@ -1585,10 +1559,6 @@ Therefore,
 \boxed{\kappa_2(C)=1.}
 \]
 
-% =================================================
-% SECTION 3
-% =================================================
-
 \section{Perfectly Conditioned $C$ for any $A\in GL_n(\mathbb{R})$}
 
 We prove that we can make
@@ -1862,11 +1832,6 @@ The expression for $\kappa_2(B)$ applies when
 \alpha>\sigma_{\max}(A)^2
 \]
 and $\sigma_{\max}(A)>\sigma_{\min}(A)$.
-
-
-% =================================================
-% SECTION 4
-% =================================================
 
 \section{Minimum-Norm Imaginary Perturbation}
 
@@ -2190,9 +2155,6 @@ B_{\mathrm{SVD}}.
 Thus the QR and SVD constructions give exactly the same matrix, and both attain the global lower bound.
 \end{proof}
 
-% =================================================
-% SECTION 5
-% =================================================
 
 \section{Iterative Method for $Ax=b$}
 
@@ -2463,9 +2425,6 @@ Finally,
 This proves both convergence and the stated convergence rate.
 \end{proof}
 
-% =================================================
-% SECTION 6
-% =================================================
 
 \section{Generalized Bounds}
 
